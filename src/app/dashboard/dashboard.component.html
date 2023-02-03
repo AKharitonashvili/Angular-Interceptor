@@ -1,0 +1,7 @@
+<div *ngIf="todosArray$ | async as todosArray">
+  <div *ngFor="let todos of todosArray">
+    <div *ngFor="let todo of todos">
+      {{ todo.userId }} - {{ todo.title }} - {{ todo.completed }}
+    </div>
+  </div>
+</div>
