@@ -13,10 +13,11 @@ import {
   TokenInterceptor,
 } from './interceptors';
 import { LanguageInterceptor } from './interceptors/accept-language.interceptor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule],
   providers: [
     DashboardService,
     {

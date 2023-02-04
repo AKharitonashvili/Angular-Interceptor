@@ -1,7 +1,13 @@
 <div *ngIf="todosArray$ | async as todosArray">
-  <div *ngFor="let todos of todosArray">
-    <div *ngFor="let todo of todos">
-      {{ todo.userId }} - {{ todo.title }} - {{ todo.completed }}
+  <div class="d-flex w-50 flex-column" *ngFor="let todos of todosArray">
+    <div
+      class="border-bottom border-dark p-4 d-flex justify-content-between"
+      *ngFor="let todo of todos"
+      [ngClass]="{ 'bg-danger': !todo.completed, 'bg-success': todo.completed }"
+    >
+      <div class="w-25 text-center">UserId: {{ todo.userId }}</div>
+      <div class="w-50 text-center">Title: {{ todo.title }}</div>
+      <div class="w-25 text-center">Completed: {{ todo.completed }}</div>
     </div>
   </div>
 </div>

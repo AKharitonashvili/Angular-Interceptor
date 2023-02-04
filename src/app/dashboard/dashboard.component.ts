@@ -11,16 +11,17 @@ import * as _ from 'lodash';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent implements OnInit {
-  public todosArray$: Observable<TodoModel[][]> = this.dashboardService.todos$.pipe(
-    map((todos: TodoModel[]) => _.mapValues(_.groupBy(todos, 'userId'))),
-    map((todosGrouped) => {
-      const todosArray: TodoModel[][] = [];
-      Object.keys(todosGrouped).forEach((i) =>
-        todosArray.push(todosGrouped[i])
-      );
-      return todosArray;
-    }),
-  );
+  public todosArray$: Observable<TodoModel[][]> =
+    this.dashboardService.todos$.pipe(
+      map((todos: TodoModel[]) => _.mapValues(_.groupBy(todos, 'userId'))),
+      map((todosGrouped) => {
+        const todosArray: TodoModel[][] = [];
+        Object.keys(todosGrouped).forEach((i) =>
+          todosArray.push(todosGrouped[i])
+        );
+        return todosArray;
+      })
+    );
 
   constructor(private dashboardService: DashboardService) {}
 
