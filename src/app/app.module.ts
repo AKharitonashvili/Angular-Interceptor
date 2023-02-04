@@ -14,10 +14,11 @@ import {
 } from './interceptors';
 import { LanguageInterceptor } from './interceptors/accept-language.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule, BrowserAnimationsModule],
   providers: [
     DashboardService,
     {
