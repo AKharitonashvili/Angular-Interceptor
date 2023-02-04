@@ -12,6 +12,7 @@ export class AppComponent {
     { name: 'JSESSION_ID', value: UUID.UUID() },
     { name: 'Login_Time', value: new Date(Date.now()).toLocaleString() },
     { name: 'Login_Duration', value: (0).toString() },
+    { name: 'Language', value: 'en-us' },
   ];
 
   constructor() {

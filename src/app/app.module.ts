@@ -11,7 +11,8 @@ import {
   LoginDurationInterceptor,
   LoginTimeInterceptor,
   TokenInterceptor,
-} from './interceptor';
+} from './interceptors';
+import { LanguageInterceptor } from './interceptors/accept-language.interceptor';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -36,6 +37,11 @@ import {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoginDurationInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LanguageInterceptor,
       multi: true,
     },
   ],
