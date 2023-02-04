@@ -15,10 +15,22 @@ import {
 import { LanguageInterceptor } from './interceptors/accept-language.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule } from '@angular/material/select';
+import { SelectUserIdRangeComponent } from './dashboard/select-user-id-range/select-user-id-range.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule, BrowserAnimationsModule],
+  declarations: [AppComponent, DashboardComponent, SelectUserIdRangeComponent],
+  imports: [
+    MatSelectModule,
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule
+  ],
   providers: [
     DashboardService,
     {

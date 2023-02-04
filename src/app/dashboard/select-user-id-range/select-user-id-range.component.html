@@ -1,0 +1,35 @@
+<form
+  class="d-flex flex-column justify-content-center p-4 w-100"
+  *ngIf="form"
+  [formGroup]="form"
+  appearance="fill"
+>
+  <div class="d-flex justify-content-around w-100">
+    <mat-form-field appearance="fill">
+      <mat-label>From User Range</mat-label>
+      <mat-select [formControl]="from" name="food">
+        <mat-option *ngFor="let range of rangeArray" [value]="range">
+          {{ range }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>To User Range</mat-label>
+      <mat-select [formControl]="to" name="food">
+        <mat-option *ngFor="let range of rangeArray" [value]="range">
+          {{ range }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <button
+    class="btn btn-dark"
+    role="button"
+    type="submit"
+    (click)="submit.emit()"
+  >
+    Get Data
+  </button>
+</form>

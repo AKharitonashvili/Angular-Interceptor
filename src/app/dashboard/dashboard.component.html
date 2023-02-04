@@ -1,4 +1,4 @@
-<div *ngIf="todosArray$ | async as todosArray">
+<div class="d-flex w-100" *ngIf="todosArray$ | async as todosArray">
   <div class="d-flex w-50 flex-column" *ngFor="let todos of todosArray">
     <div
       class="border-bottom border-dark p-4 d-flex justify-content-between"
@@ -9,5 +9,8 @@
       <div class="w-50 text-center">Title: {{ todo.title }}</div>
       <div class="w-25 text-center">Completed: {{ todo.completed }}</div>
     </div>
+  </div>
+  <div class="w-50">
+    <app-select-user-id-range [form]="form" (submit)="changeRange()"></app-select-user-id-range>
   </div>
 </div>

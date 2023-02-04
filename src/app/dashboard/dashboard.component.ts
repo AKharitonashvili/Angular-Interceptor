@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
 import { TodoModel } from './models';
 import { DashboardService } from './services/dashboard.service';
-import * as _ from 'lodash';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,18 +12,25 @@ import * as _ from 'lodash';
 })
 export class DashboardComponent implements OnInit {
   public todosArray$: Observable<TodoModel[][]> =
-    this.dashboardService.todos$.pipe(
-      map((todos: TodoModel[]) => _.mapValues(_.groupBy(todos, 'userId'))),
-      map((todosGrouped) => {
-        const todosArray: TodoModel[][] = [];
-        Object.keys(todosGrouped).forEach((i) =>
-          todosArray.push(todosGrouped[i])
-        );
-        return todosArray;
-      })
-    );
+    this.dashboardService.getTodos(1);
 
-  constructor(private dashboardService: DashboardService) {}
+  public form: FormGroup = this.fb.group({
+    from: new FormControl(null),
+    to: new FormControl(null),
+  });
+
+  constructor(
+    private dashboardService: DashboardService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {}
+
+  public changeRange(): void {
+    console.log(this.form.value)
+    this.todosArray$ = this.dashboardService.getTodos(
+      this.form.value.from,
+      this.form.value.to
+    );
+  }
 }
