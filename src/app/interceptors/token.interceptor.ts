@@ -17,7 +17,7 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(
       getClone(
         req,
-        'Custom_Authorization-Token-ID',
+        'A_Custom_Authorization-Token-ID',
         sessionStorage.getItem('Token_ID')
       )
     );

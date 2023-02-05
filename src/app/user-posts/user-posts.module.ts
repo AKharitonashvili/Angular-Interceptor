@@ -4,7 +4,7 @@ import { UserPostsComponent } from './user-posts.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserPostsService } from './services/user-posts.service';
 import { CustomEnLanguageInterceptor } from '../interceptors/custom-en.interceptor';
-import { Router, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { commonInterceptors } from '../app.module';
 
 const services = [UserPostsService];
@@ -26,6 +26,6 @@ const routes: Routes = [
 @NgModule({
   imports: [CommonModule, HttpClientModule, RouterModule.forChild(routes)],
   declarations: [UserPostsComponent],
-  providers: [...services, ...commonInterceptors, interceptors],
+  providers: [...services, ...interceptors],
 })
 export class UserPostsModule {}

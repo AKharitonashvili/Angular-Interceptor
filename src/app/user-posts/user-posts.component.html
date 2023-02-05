@@ -1,6 +1,3 @@
-<p>
-  user-posts works!
-</p>
-<div *ngIf="userPosts$ | async">
-
+<div class="d-flex justify-content-center" *ngIf="userPosts$ | async">
+  <div class="bg-light p-4 border border-dark">User Posts</div>
 </div>

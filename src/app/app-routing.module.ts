@@ -13,6 +13,11 @@ const routes: Routes = [
       import('./user-posts/user-posts.module').then((m) => m.UserPostsModule),
   },
   {
+    path: 'Comments',
+    loadChildren: () =>
+      import('./comments/comments.module').then((m) => m.CommentsModule),
+  },
+  {
     path: 'Home',
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),

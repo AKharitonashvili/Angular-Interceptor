@@ -14,6 +14,6 @@ export class CustomEnLanguageInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    return next.handle(getClone(req, 'Custom_Accept_Language', 'en'));
+    return next.handle(getClone(req, 'A_Custom_Accept_Language', 'en'));
   }
 }

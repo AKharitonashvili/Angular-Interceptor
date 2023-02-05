@@ -15,7 +15,7 @@ export class JsessionIdInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     return next.handle(
-      getClone(req, 'Custom_JSESSION_ID', sessionStorage.getItem('JSESSION_ID'))
+      getClone(req, 'A_Custom_JSESSION_ID', sessionStorage.getItem('JSESSION_ID'))
     );
   }
 }

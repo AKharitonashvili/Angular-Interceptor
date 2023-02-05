@@ -17,7 +17,7 @@ export class LoginDurationInterceptor implements HttpInterceptor {
     return next.handle(
       getClone(
         req,
-        'Custom_Login_Duration',
+        'A_Custom_Login_Duration',
         sessionStorage.getItem('Login_Duration')
       )
     );
