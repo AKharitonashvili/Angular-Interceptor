@@ -23,8 +23,10 @@ const routes: Routes = [
   },
 ];
 
+const modules = [CommonModule, RouterModule.forChild(routes)];
+
 @NgModule({
-  imports: [CommonModule, HttpClientModule, RouterModule.forChild(routes)],
+  imports: [HttpClientModule, ...modules],
   declarations: [UserPostsComponent],
   providers: [...services, ...interceptors],
 })
