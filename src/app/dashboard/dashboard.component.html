@@ -1,13 +1,24 @@
-<div class="d-flex w-100" *ngIf="todosArray$ | async as todosArray">
-  <div class="d-flex w-50 flex-column flex-nowrap" *ngFor="let todos of todosArray">
+<div class="d-flex w-100">
+  <div
+    class="d-flex flex-column w-50 container"
+    *ngIf="todosArray$ | async as todosArray"
+  >
     <div
-      class="border-bottom border-end border-dark p-4 d-flex justify-content-between w-100"
-      *ngFor="let todo of todos"
-      [ngClass]="{ 'bg-danger': !todo.completed, 'bg-success': todo.completed }"
+      class="d-flex w-100 flex-column flex-nowrap"
+      *ngFor="let todos of todosArray"
     >
-      <div class="w-25 text-center">UserId: {{ todo.userId }}</div>
-      <div class="w-50 text-center">Title: {{ todo.title }}</div>
-      <div class="w-25 text-center">Completed: {{ todo.completed }}</div>
+      <div
+        class="border-bottom border-end border-dark p-4 d-flex justify-content-between w-100"
+        *ngFor="let todo of todos"
+        [ngClass]="{
+          'bg-danger': !todo.completed,
+          'bg-success': todo.completed
+        }"
+      >
+        <div class="w-25 text-center">UserId: {{ todo.userId }}</div>
+        <div class="w-50 text-center">Title: {{ todo.title }}</div>
+        <div class="w-25 text-center">Completed: {{ todo.completed }}</div>
+      </div>
     </div>
   </div>
   <div class="w-50">

@@ -20,15 +20,17 @@ export class SelectUserIdRangeComponent implements OnInit {
 
   public rangeArray: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-  public get from():FormControl{
-    return this.form.get('from') as FormControl
+  public get from(): FormControl {
+    return this.form.get('from') as FormControl;
   }
 
-  public get to():FormControl{
-    return this.form.get('to') as FormControl
+  public get to(): FormControl {
+    return this.form.get('to') as FormControl;
   }
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    this.from.setValue(this.rangeArray[0]);
+  }
 }
