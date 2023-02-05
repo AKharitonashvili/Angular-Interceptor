@@ -10,6 +10,7 @@ import {
   LoginTimeInterceptor,
   TokenInterceptor,
 } from './interceptors';
+import { LanguageInterceptor } from './interceptors/accept-language.interceptor';
 import { NavbarModule } from './navbar/navbar.module';
 
 const modules = [
@@ -20,7 +21,7 @@ const modules = [
   HttpClientModule,
 ];
 
-const interceptors = [
+export const commonInterceptors = [
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
@@ -41,12 +42,17 @@ const interceptors = [
     useClass: LoginDurationInterceptor,
     multi: true,
   },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LanguageInterceptor,
+    multi: true,
+  },
 ];
 
 @NgModule({
   imports: [...modules],
   declarations: [AppComponent],
-  providers: [...interceptors],
+  providers: [...commonInterceptors],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

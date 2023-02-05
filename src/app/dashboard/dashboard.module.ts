@@ -1,5 +1,5 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard.component';
 import { SelectUserIdRangeComponent } from './select-user-id-range/select-user-id-range.component';
 import { DashboardService } from './services/dashboard.service';
@@ -19,11 +19,7 @@ const interceptors = [
   },
 ];
 
-const modules = [
-  CommonModule,
-  ReactiveFormsModule,
-  MatSelectModule,
-];
+const modules = [CommonModule, ReactiveFormsModule, MatSelectModule];
 
 const routes: Routes = [
   {
