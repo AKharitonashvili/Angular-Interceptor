@@ -11,8 +11,10 @@ import {
 } from './interceptors';
 import { LanguageInterceptor } from './interceptors/accept-language.interceptor';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { NavbarModule } from './navbar/navbar.module';
+import { InfoModule } from './info/info.module';
 
-const modules = [DashboardModule];
+const modules = [DashboardModule, NavbarModule, InfoModule];
 
 const interceptors = [
   {
