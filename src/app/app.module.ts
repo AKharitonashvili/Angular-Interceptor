@@ -9,8 +9,9 @@ import {
   LoginDurationInterceptor,
   LoginTimeInterceptor,
   TokenInterceptor,
+  LanguageInterceptor,
+  CacheInterceptor,
 } from './interceptors';
-import { LanguageInterceptor } from './interceptors/accept-language.interceptor';
 import { NavbarModule } from './navbar/navbar.module';
 
 const modules = [
@@ -37,14 +38,19 @@ export const commonInterceptors = [
     useClass: LoginTimeInterceptor,
     multi: true,
   },
+  // {
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass: LoginDurationInterceptor,
+  //   multi: true,
+  // },
   {
     provide: HTTP_INTERCEPTORS,
-    useClass: LoginDurationInterceptor,
+    useClass: LanguageInterceptor,
     multi: true,
   },
   {
     provide: HTTP_INTERCEPTORS,
-    useClass: LanguageInterceptor,
+    useClass: CacheInterceptor,
     multi: true,
   },
 ];

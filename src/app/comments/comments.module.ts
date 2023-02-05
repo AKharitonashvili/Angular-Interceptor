@@ -4,8 +4,8 @@ import { CommentsComponent } from './comments.component';
 import { CommentsServicesService } from './services/comments-services.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CustomEnLanguageInterceptor } from '../interceptors/custom-en.interceptor';
 import { commonInterceptors } from '../app.module';
+import { CustomEnLanguageInterceptor } from '../interceptors';
 
 const services = [CommentsServicesService];
 

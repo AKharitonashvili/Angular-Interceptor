@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { UserPostsComponent } from './user-posts.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserPostsService } from './services/user-posts.service';
-import { CustomEnLanguageInterceptor } from '../interceptors/custom-en.interceptor';
 import { RouterModule, Routes } from '@angular/router';
 import { commonInterceptors } from '../app.module';
+import { CustomEnLanguageInterceptor } from '../interceptors';
 
 const services = [UserPostsService];
+
 const interceptors = [
   {
     provide: HTTP_INTERCEPTORS,

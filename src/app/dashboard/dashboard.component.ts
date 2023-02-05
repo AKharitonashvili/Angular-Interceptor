@@ -27,10 +27,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {}
 
   public changeRange(): void {
-    console.log(this.form.value)
-    this.todosArray$ = this.dashboardService.getTodos(
-      this.form.value.from,
-      this.form.value.to
-    );
+    this.todosArray$ = this.dashboardService.getTodos(this.form.value.from);
   }
 }

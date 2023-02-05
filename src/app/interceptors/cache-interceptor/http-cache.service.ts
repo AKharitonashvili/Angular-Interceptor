@@ -1,0 +1,34 @@
+import { HttpRequest, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class HttpCacheService {
+  private cacheMap = new Map<any, any>(null);
+
+  getFromCache(req: HttpRequest<any>): HttpResponse<any> | undefined {
+    const url = req.urlWithParams;
+    const cached = this.cacheMap.get(url);
+
+    if (!cached) {
+      return undefined;
+    }
+
+    return this.cacheMap.get(url).response;
+  }
+
+  addToCache(req: HttpRequest<any>, response: HttpResponse<any>): void {
+    const url = req.urlWithParams;
+    const entry = { url, response, addedTime: Date.now() };
+    this.cacheMap.set(url, entry);
+  }
+
+  public get(urlWithParams: string): any {
+    return this.cacheMap.get(urlWithParams);
+  }
+
+  public delete(urlWithParams: string): any {
+    this.cacheMap.delete(urlWithParams);
+  }
+}
