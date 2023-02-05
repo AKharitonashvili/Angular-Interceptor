@@ -14,10 +14,8 @@ export class LoginTimeInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const Login_Time = sessionStorage.getItem('Login_Time');
-
-    return Login_Time
-      ? next.handle(getClone(req, 'Custom_Login_Time', Login_Time))
-      : next.handle(req);
+    return next.handle(
+      getClone(req, 'Custom_Login_Time', sessionStorage.getItem('Login_Time'))
+    );
   }
 }

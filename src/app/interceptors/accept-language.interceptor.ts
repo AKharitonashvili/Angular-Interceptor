@@ -14,10 +14,12 @@ export class LanguageInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const Language = sessionStorage.getItem('Language');
-
-    return Language
-      ? next.handle(getClone(req, 'Custom_Language', Language))
-      : next.handle(req);
+    return next.handle(
+      getClone(
+        req,
+        'Custom_Accept_Language',
+        sessionStorage.getItem('Language')
+      )
+    );
   }
 }

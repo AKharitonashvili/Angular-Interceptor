@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,9 +9,17 @@ import { DashboardComponent } from './dashboard.component';
 import { SelectUserIdRangeComponent } from './select-user-id-range/select-user-id-range.component';
 import { DashboardService } from './services/dashboard.service';
 import { MatSelectModule } from '@angular/material/select';
+import { LanguageInterceptor } from '../interceptors/accept-language.interceptor';
 
 const components = [DashboardComponent, SelectUserIdRangeComponent];
-const servfices = [DashboardService];
+const services = [DashboardService];
+const interceptors = [
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LanguageInterceptor,
+    multi: true,
+  },
+];
 
 @NgModule({
   imports: [
@@ -26,6 +34,6 @@ const servfices = [DashboardService];
   ],
   declarations: [...components],
   exports: [...components],
-  providers: [...servfices],
+  providers: [...services, ...interceptors],
 })
 export class DashboardModule {}

@@ -6,20 +6,14 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { getClone } from './';
+import { getClone } from '.';
 
 @Injectable()
-export class LoginDurationInterceptor implements HttpInterceptor {
+export class CustomEnLanguageInterceptor implements HttpInterceptor {
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    return next.handle(
-      getClone(
-        req,
-        'Custom_Login_Duration',
-        sessionStorage.getItem('Login_Duration')
-      )
-    );
+    return next.handle(getClone(req, 'Custom_Accept_Language', 'en'));
   }
 }
