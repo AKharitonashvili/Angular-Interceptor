@@ -32,7 +32,7 @@ export class CacheInterceptor implements HttpInterceptor {
     // }
 
     // Checked if there is cached data for this URI
-    const cachedResponse = this.cacheService.getFromCache(req);
+    const cachedResponse = this.cacheService.getFromCache(req.urlWithParams);
     if (cachedResponse) {
       // In case of parallel requests to same URI,
       // return the request already in progress
@@ -47,7 +47,7 @@ export class CacheInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       tap((event) => {
         if (event instanceof HttpResponse) {
-          this.cacheService.addToCache(req, event);
+          this.cacheService.addToCache(req.urlWithParams, event);
         }
       })
     );

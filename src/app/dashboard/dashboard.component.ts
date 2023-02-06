@@ -16,7 +16,6 @@ export class DashboardComponent implements OnInit {
 
   public form: FormGroup = this.fb.group({
     from: new FormControl(null),
-    to: new FormControl(null),
   });
 
   constructor(

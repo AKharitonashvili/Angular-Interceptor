@@ -1,6 +1,6 @@
 <div class="d-flex w-100">
   <div
-    class="d-flex flex-column w-50 container"
+    class="d-flex flex-column w-50 container my-4"
     *ngIf="todosArray$ | async as todosArray"
   >
     <div
@@ -9,15 +9,21 @@
     >
       <div
         class="border-bottom border-end border-dark p-4 d-flex justify-content-between w-100"
-        *ngFor="let todo of todos"
+        *ngFor="let todo of todos; let i = index"
         [ngClass]="{
-          'bg-danger': !todo.completed,
-          'bg-success': todo.completed
+          'bg-light': i % 2 == 0
         }"
       >
         <div class="w-25 text-center">UserId: {{ todo.userId }}</div>
         <div class="w-50 text-center">Title: {{ todo.title }}</div>
-        <div class="w-25 text-center">Completed: {{ todo.completed }}</div>
+        <div
+          class="w-25 text-center text-success"
+          [ngClass]="{
+            'text-danger': !todo.completed
+          }"
+        >
+          Completed: {{ todo.completed }}
+        </div>
       </div>
     </div>
   </div>

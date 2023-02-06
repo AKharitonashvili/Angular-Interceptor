@@ -24,10 +24,6 @@ export class SelectUserIdRangeComponent implements OnInit {
     return this.form.get('from') as FormControl;
   }
 
-  public get to(): FormControl {
-    return this.form.get('to') as FormControl;
-  }
-
   constructor() {}
 
   ngOnInit(): void {
