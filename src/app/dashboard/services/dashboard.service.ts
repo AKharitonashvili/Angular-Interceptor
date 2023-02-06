@@ -17,6 +17,7 @@ export class DashboardService {
     return this.http
       .get<TodoModel[]>(`https://jsonplaceholder.typicode.com/todos`, {
         params: { userId },
+        // headers: { ignoreCache: 'true' },
       })
       .pipe(
         map((todos: TodoModel[]) => _.mapValues(_.groupBy(todos, 'userId'))),

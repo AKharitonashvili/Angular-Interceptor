@@ -14,9 +14,11 @@ export class HttpCacheService {
   }
 
   public addToCache(urlWithParams: string, response: HttpResponse<any>): void {
-    const url = urlWithParams;
-    const entry = { url, response, addedTime: Date.now() };
-    this.cacheMap.set(url, entry);
+    this.cacheMap.set(urlWithParams, {
+      url: urlWithParams,
+      response,
+      addedTime: Date.now(),
+    });
   }
 
   public get(urlWithParams: string): any {
@@ -25,5 +27,13 @@ export class HttpCacheService {
 
   public delete(urlWithParams: string): void {
     this.cacheMap.delete(urlWithParams);
+  }
+
+  public invalidate(urlWithParams: string): void {
+    this.cacheMap.delete(urlWithParams);
+  }
+
+  public invalidateAll(): void {
+    this.cacheMap.clear();
   }
 }
