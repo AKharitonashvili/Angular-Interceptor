@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { TodoModel } from '../models';
@@ -8,7 +8,15 @@ import * as _ from 'lodash';
   providedIn: 'root',
 })
 export class DashboardService {
-  constructor(private http: HttpClient) {}
+
+
+  constructor(
+    private http: HttpClient,
+    // private handler: HttpBackend,
+    ) 
+  {
+    // this.http = new HttpClient(handler);
+  }
 
   public getTodos(userId: number): Observable<TodoModel[][]> {
     let headers = new Headers();
