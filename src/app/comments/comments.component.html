@@ -1,3 +1,21 @@
 <div class="d-flex justify-content-center" *ngIf="comments$ | async">
   <div class="bg-light p-4 border border-dark">Comments</div>
 </div>
+
+<div
+  class="d-flex flex-column container justify-content-center"
+  *ngIf="comments$ | async as comments"
+>
+  <h4 class="bg-light p-4 border-bottom border-dark">User Posts</h4>
+  <div class="d-flex flex-column">
+    <div
+      class="p-4 border-bottom border-dark d-flex flex-column"
+      *ngFor="let comment of comments; let i = index"
+      [ngClass]="{ 'bg-light': i % 2 == 1 }"
+    >
+      <div>{{ comment.postId }} - {{ comment.email }}</div>
+      <div>{{ comment.id }} - {{ comment.name }}</div>
+      <div [innerHTML]="comment.body"></div>
+    </div>
+  </div>
+</div>
